@@ -6,9 +6,13 @@ print("\nPlease enter any items involving mobile device tax first.")
 
 mobile_product = 0.00
 mobile_prompt = " "
+# Take in mobile items, including input validation, and add to mobile_tax_list
 while mobile_prompt.lower() != "n":
     try:
         mobile_prompt = input("Mobile item? (y/n) ")
+
+        if mobile_prompt.lower() == "n":
+            break
 
         if mobile_prompt.lower() == "y":
             mobile_product = float(input("Enter price: "))
@@ -25,12 +29,14 @@ while mobile_prompt.lower() != "n":
     except ValueError:
         print("Please enter a valid price.")
 
+# Sum list and add tax
 mobile_tax_sum = sum(mobile_tax_list)
 mobile_tax_total = mobile_tax_sum * 0.02
 
 print("\nEnter prices of non-mobile items, if none, or finished entering prices, enter '0' in at the prompt.")
 
 price_prompt = " "
+# Collect regularly taxed items, including input validation, and add to price_list
 while price_prompt != "0":
     try:
         price_prompt = float(input("Enter price: "))
@@ -38,7 +44,7 @@ while price_prompt != "0":
         if price_prompt == 0:
             break
 
-        if price_prompt != 0 and price_prompt > 0:
+        if price_prompt > 0:
             price_list.append(price_prompt)
         else:
             print("Please enter a valid price.")
@@ -50,6 +56,7 @@ while price_prompt != "0":
 sum_list = sum(price_list)
 
 
+# Function for adding regular tax and combining both tax lists, also formats the output price.
 def total_price(price):
     std_tax = 0.0825
     tax_amount = price * std_tax
