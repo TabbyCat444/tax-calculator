@@ -1,7 +1,7 @@
 price_list = []
 mobile_tax_list = []
 
-print("Please note that this calculator is specific to Texarkana, TX and was last updated on 8/7/22")
+print("Please note that this calculator is specific to Texarkana, TX and was last updated on 3/27/23")
 print("\nPlease enter any items involving mobile device tax first.")
 
 mobile_product = 0.00
@@ -68,3 +68,6 @@ def total_price(price):
 total_price(price=sum_list)
 
 print(total_price)
+print("Total mobile tax: $" + format(mobile_tax_total, ".2f"))
+print("Total local tax: $" + format((sum_list * 0.0825), ".2f"))
+print(" Total tax amount: $" + format((mobile_tax_total + (sum_list * 0.0825)), ".2f"))
